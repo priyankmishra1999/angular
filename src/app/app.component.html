@@ -1,0 +1,31 @@
+<div class="container">
+    <form [formGroup]="regForm">
+        <div id="formfield">
+            <input type="text" name="text" class="text" size="50" placeholder="Name" required>
+            <input type="text" name="text" class="text" size="50" placeholder="Email" required>
+            <div formArrayName="alternateEmails" *ngFor="let email of alternateEmails.controls; let i=index">
+                <input type="text" name="text" class="text" size="50" placeholder="Email" required
+                    [formControlName]="i">
+            </div>
+            <input type="text" name="text" class="text" size="50" placeholder="Optional Field" required>
+        </div>
+        <input type="submit" type="submit" value="Submit">
+    </form>
+
+    <div class="controls">
+        <button class="add" (click)="addAlternateEmail()">Add Email</button>
+        <button class="remove" onclick="remove()">Remove</button>
+    </div>
+</div>
+<div class="containerNew">
+    <form [formGroup]="simpleForm">
+        <div id="fields">
+            <input type="text" name="text" class="text" placeholder="name" required>
+        </div>
+        <button type="submit">Submit</button>
+    </form>
+</div>
+<button [routerLink]="['/search-field']">Search Field</button>
+<button [routerLink]="['/server']">button</button>
+<router-outlet></router-outlet>     
+<!-- <app-server-component></app-server-component> -->
