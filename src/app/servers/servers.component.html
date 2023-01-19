@@ -1,10 +1,6 @@
-<div class="container">
-    <div class="row">
-        <div class="col-xs-12">
-            <h3>New Component</h3>
-            <hr>
-            <app-server-component></app-server-component>
-            <app-server-component></app-server-component>
-        </div>
-    </div>
-</div>
+<button class="btn btn-primary" id="button" (click)="oncreateServer()"[disabled]="!noNewServer">Add Data {{noNewServer}}</button>
+<p>{{serverCreationStatus}}</p>
+<!-- <input type="text" (input)="updateServerName($event)" > -->
+<input type="text" [(ngModel)]="serverName" >
+<p>{{serverName}}</p>
+<app-server-component></app-server-component>
