@@ -1,6 +1,22 @@
-<button class="btn btn-primary" id="button" (click)="oncreateServer()"[disabled]="!noNewServer">Add Data {{noNewServer}}</button>
-<p>{{serverCreationStatus}}</p>
+<button class="btn btn-primary" id="button" (click)="oncreateServer()"[disabled]="!noNewServer">Add Data</button>
+<!-- <p>{{serverCreationStatus}}</p> -->
 <!-- <input type="text" (input)="updateServerName($event)" > -->
-<input type="text" [(ngModel)]="serverName" >
-<p>{{serverName}}</p>
-<app-server-component></app-server-component>
+<!-- <input type="text" [(ngModel)]="serverName" > -->
+<!-- <p>{{serverName}}</p> -->
+
+<!-- <p *ngIf="serverCreated; else noServer"> data {{dataList}}</p> -->
+<ng-template #noServer>
+<p>no server created</p>
+</ng-template>
+ <table >
+    <tr>
+        <th>ID</th><br>
+    <th>TITLE</th>
+    <th>View</th>
+</tr>
+    <tr *ngFor="let item of dataList" ><td>{{item?.contentId}}</td><br>
+   <td>{{item?.title}}</td> <td><button class="btn btn-outline-primary" title="View" (click)="viewData(item?.contentId)">
+    <i class='fa fa-eye' style='color: red'>view</i>
+</button></td></tr>
+
+ </table><p>{{title}}</p>

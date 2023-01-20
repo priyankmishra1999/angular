@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { LocalService } from './local.service';
 
 
 @Component({
@@ -13,8 +14,7 @@ export class AppComponent implements OnInit {
 
   regForm: FormGroup;
 
-  simpleForm:FormGroup
-  
+  simpleForm: FormGroup
   get alternateEmails() {
     return this.regForm.get('alternateEmails') as FormArray;
   }
@@ -22,10 +22,10 @@ export class AppComponent implements OnInit {
   addAlternateEmail() {
     console.log(this.alternateEmails)
     this.alternateEmails.push(this.fb.control(''));
-    
+
   }
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private localStore: LocalService) { }
 
 
   ngOnInit(): void {
@@ -33,8 +33,8 @@ export class AppComponent implements OnInit {
       userName: ['', [Validators.required]],
       email: [''],
       alternateEmails: this.fb.array([])
-      
-      
+
+
     });
   }
 
